@@ -2,24 +2,19 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>wavesurfer.js | Audio Element Example</title>
+        <title>wavesurfer.js | Media Element Example</title>
 
         <link href="data:image/gif;" rel="icon" type="image/x-icon" />
 
         <!-- Bootstrap -->
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
 
         <link rel="stylesheet" href="../css/style.css" />
         <link rel="stylesheet" href="../css/ribbon.css" />
-        <link rel="screenshot" itemprop="screenshot" href="http://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
+        <link rel="screenshot" itemprop="screenshot" href="https://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
 
         <!-- wavesurfer.js -->
-        <script src="../../src/wavesurfer.js"></script>
-        <script src="../../src/webaudio.js"></script>
-        <script src="../../src/audioelement.js"></script>
-        <script src="../../src/drawer.js"></script>
-        <script src="../../src/drawer.canvas.js"></script>
+        <script src="../../dist/wavesurfer.min.js"></script>
 
         <script src="../../plugin/wavesurfer.regions.js"></script>
 
@@ -34,15 +29,11 @@
                     <li><a href="/"><i class="glyphicon glyphicon-home"></i></a></li>
                 </ul>
 
-                <h1 itemprop="name">Audio Element Fallback Example</h1>
+                <h1 itemprop="name">Media Element Fallback Example</h1>
             </div>
 
             <div id="demo">
                 <div id="waveform">
-                    <div class="progress progress-striped active" id="progress-bar">
-                        <div class="progress-bar progress-bar-info"></div>
-                    </div>
-
                     <!-- Here be the waveform -->
                 </div>
 
@@ -64,10 +55,10 @@
 
                 <p>
                     <strong>wavesurfer.js</strong> will automatically
-                    fallback to HTML5 Audio if Web Audio is not
+                    fallback to HTML5 Media if Web Audio is not
                     supported. However, you can choose to use audio
                     element manually. Simply set the <code>backend</code>
-                    option to <code>"AudioElement"</code>.
+                    option to <code>"MediaElement"</code>.
                 </p>
 
                 <p>
@@ -75,7 +66,7 @@
 
 wavesurfer.init({
     container: document.querySelector('#wave'),
-    backend: 'AudioElement'
+    backend: 'MediaElement'
 });
 </code></pre>
                 </p>
@@ -83,34 +74,36 @@ wavesurfer.init({
                 <h3>Pre-rendered Peaks</h3>
 
                 <p>
-                    If you have pre-rendered peaks (e.g. on server),
+                    If you have pre-rendered peaks (on your server),
                     you can pass them into the <code>load</code>
-                    function. This is optional – if you don't provide
+                    function. This is optional–if you don't provide
                     any peaks,
-                    <strong>waserver.js</strong> will just draw a thin
-                    line instead of a waveform.
+                    <strong>waserver.js</strong> will first draw a
+                    thin line instead of a waveform, then attempt to
+                    download the audio file via Ajax and decode it
+                    with Web Audio if available.
                 </p>
 
                 <p>
-<pre><code>wavesurfer.load('example/media/demo.mp3', arrayOfPeaks);</code></pre>
+<pre><code>wavesurfer.load('example/media/demo.mp3');</code></pre>
                 </p>
 
 
                 <p>
-                    Press this button to see the same demo without peaks:
-                    <button class="btn btn-warning" data-action="no-peaks">
-                        Load without pre-rendered peaks
+                    Press this button to see the same demo with pre-decoded peaks:
+                    <button class="btn btn-warning" data-action="peaks">
+                        Load with pre-rendered peaks
                     </button>
                 </p>
             </div>
 
             <div class="footer row">
                 <div class="col-sm-12">
-                    <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
+                    <a rel="license" href="https://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
                 </div>
 
                 <div class="col-sm-7">
-                    <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">wavesurfer.js</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/katspaugh/wavesurfer.js" property="cc:attributionName" rel="cc:attributionURL">katspaugh</a> is licensed under a&nbsp;<a style="white-space: nowrap" rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+                    <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">wavesurfer.js</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/katspaugh/wavesurfer.js" property="cc:attributionName" rel="cc:attributionURL">katspaugh</a> is licensed under a&nbsp;<a style="white-space: nowrap" rel="license" href="https://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
                 </div>
 
                 <div class="col-sm-5">

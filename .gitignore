@@ -1,2 +1,10 @@
-/build/wavesurfer.cjs.js
-/build/wavesurfer.amd.js
+dist/wavesurfer.dev.js
+dist/plugin/*.js
+!/dist/plugin/*.min.js
+/node_modules
+/bower_components
+/npm-debug.log
+/.grunt
+/coverage
+/_SpecRunner.html
+.DS_Store
